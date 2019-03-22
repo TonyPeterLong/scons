@@ -1,0 +1,8 @@
+from ntpath import basename # Gets a file's basename from it's pathname.
+
+Import('env')
+M4FLAGS = '-DVV_SUBDERIVATIVE_NAME=5777C -DM4_USER_MODE_CONFIGURATION=true'
+
+## Construction rules.
+for file in Glob("*.xdm"):
+	env.M4(target=basename(str(file))+'.orig', source=file, M4FLAGS=M4FLAGS)
